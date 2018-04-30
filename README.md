@@ -20,6 +20,8 @@
 Installing  a Linux server and prepare it to host 
 [Items Catalog](https://github.com/hussamEL-Hwary/Flask-items-catalog) application, securing the server from a number of attack vectors, installing and configuring a database server, and deploy Items Catalog web applications onto it.
 ### Server-Info
+###### Address: [http://35.177.244.230/](http://35.177.244.230/)
+###### SSH port: 50683
 ### AWS-instance
 ### Create-new-user
 ### Create-SSH-Key
