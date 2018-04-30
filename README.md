@@ -17,6 +17,8 @@
 - [Apache2-Config-File](#apache2-config-file)
 - [Final-step](#final-step)<hr>
 ### Overview
+Installing  a Linux server and prepare it to host 
+[Items Catalog](https://github.com/hussamEL-Hwary/Flask-items-catalog) application, securing the server from a number of attack vectors, installing and configuring a database server, and deploy Items Catalog web applications onto it.
 ### Server-Info
 ### AWS-instance
 ### Create-new-user
