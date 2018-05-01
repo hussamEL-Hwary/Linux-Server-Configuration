@@ -125,5 +125,40 @@ and paste it in ```.ssh/authorized_keys``` file
 * Inside the Flask application, the database connection is now performed with:<br>
   ```engine = create_engine('postgresql://catalog:password@localhost/catalog')```
 ### App-Config-File
+* In catalog directory ```cd /var/www/catalog``` 
+*  Make a itemsCatalog.wsgi file to serve the application over the mod_wsgi.<br>
+```sudo nano itemsCatalog.wsgi```
+* Add  content: <br>
+```
+#!/usr/bin/python
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0,"/var/www/catalog/")
+
+from catalog import app as application
+application.secret_key = 'secret_key'
+```
 ### Apache2-Config-File
+* edit apache default virtual file:<br>
+```sudo nano /etc/apache2/sites-available/000-default.conf```
+* add content:<br>
+```<VirtualHost *:80>
+                ServerName xx.xxx.xxx.xx
+                ServerAdmin admin email
+                WSGIScriptAlias / /var/www/catalog/itemsCatalog.wsgi
+                <Directory /var/www/catalog/catalog/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+                Alias /static /var/www/catalog/catalog/static
+                <Directory /var/www/catalog/catalog/static/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                LogLevel warn
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
 ### Final-step
