@@ -66,6 +66,7 @@ and paste it in ```.ssh/authorized_keys``` file
 ### Configure-timezone-to-UTC
 * run ```sudo dpkg-reconfigure tzdata``` from prompt: 
   select ```none of the above```. Then select ```UTC```.
+  * Resource [askubuntu](https://askubuntu.com/questions/323131/setting-timezone-from-terminal/323163)
 ### Install-apache2
 * ```sudo apt-get install apache2 libapache2-mod-wsgi```
 * Enable mod_wsgi if not: ```sudo a2enmod wsgi```
@@ -73,6 +74,7 @@ and paste it in ```.ssh/authorized_keys``` file
 ### Install-PostgreSQL
 * Installing PostgreSQL Python dependencies: ```sudo apt-get install libpq-dev python-dev```
 * Installing PostgreSQL: ```sudo apt-get install postgresql postgresql-contrib```
+* Resource [ubuntu](https://help.ubuntu.com/lts/serverguide/postgresql.html)
 ### Clone-Items-Catalog
 * Make a catalog named directory in /var/www ```sudo mkdir /var/www/catalog```
 * Change the owner of the directory catalog ```sudo chown -R grader:grader /var/www/catalog```
@@ -162,6 +164,7 @@ application.secret_key = 'secret_key'
                 CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
+* Resource [Digital-ocean](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
 ### Final-step
 * restart apache ```sudo services apache2 restart``` 
 * from your browser visit [http://35.177.244.230/](http://35.177.244.230/)
