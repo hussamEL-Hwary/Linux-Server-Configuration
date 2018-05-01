@@ -124,6 +124,7 @@ and paste it in ```.ssh/authorized_keys``` file
 ```# \q```. Then return to the *grader* user: ``` exit```
 * Inside the Flask application, the database connection is now performed with:<br>
   ```engine = create_engine('postgresql://catalog:password@localhost/catalog')```
+* Run ```python model.py``` and ```python lots_of_data.py``` 
 ### App-Config-File
 * In catalog directory ```cd /var/www/catalog``` 
 *  Make a itemsCatalog.wsgi file to serve the application over the mod_wsgi.<br>
@@ -162,3 +163,5 @@ application.secret_key = 'secret_key'
 </VirtualHost>
 ```
 ### Final-step
+* restart apache ```sudo services apache2 restart``` 
+* from your browser visit [http://35.177.244.230/](http://35.177.244.230/)
