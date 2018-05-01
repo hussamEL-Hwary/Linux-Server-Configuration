@@ -11,7 +11,6 @@
 - [Install-PostgreSQL](#install-postgresql)
 - [Clone-Items-Catalog](#clone-items-catalog)
 - [Virtual-Environment](#virtual-environment)
-- [Install-Required-Packages](#install-required-packages)
 - [Create-Database](#create-database)
 - [App-Config-File](#app-config-file)
 - [Apache2-Config-File](#apache2-config-file)
@@ -65,12 +64,66 @@ and paste it in ```.ssh/authorized_keys``` file
   sudo ufw enable
   ```
 ### Configure-timezone-to-UTC
+* run ```sudo dpkg-reconfigure tzdata``` from prompt: 
+  select ```none of the above```. Then select ```UTC```.
 ### Install-apache2
+* ```sudo apt-get install apache2 libapache2-mod-wsgi```
+* Enable mod_wsgi if not: ```sudo a2enmod wsgi```
+
 ### Install-PostgreSQL
+* Installing PostgreSQL Python dependencies: ```sudo apt-get install libpq-dev python-dev```
+* Installing PostgreSQL: ```sudo apt-get install postgresql postgresql-contrib```
 ### Clone-Items-Catalog
+* Make a catalog named directory in /var/www ```sudo mkdir /var/www/catalog```
+* Change the owner of the directory catalog ```sudo chown -R grader:grader /var/www/catalog```
+* Clone the bookCatalog to the catalog directory: ```https://github.com/hussamEL-Hwary/Flask-items-catalog.git catalog```
+* Create new branch production of repo  catalog : ```cd catalog && git checkout -b production```
+* change ```app.py``` to ```__init__.py``` 
+##### make .git inaccessible
+* from ```cd /var/www/catalog/``` create .htaccess file ```sudo nano .htaccess```
+  paste  ```RedirectMatch 404 /\.git```
 ### Virtual-Environment
-### Install-Required-Packages
+* install python-pip
+ ```sudo apt-get install python-pip``` 
+* install virtualenv
+ ```sudo pip install virtualenv```
+* cd to catalog file ```cd /var/www/catalog/catalog``` and run
+  ```
+  sudo pip install virtualenv 
+  sudo virtualenv venv
+  source venv/bin/activate 
+  ```
+ * And then install app required packages
+  ```
+  sudo pip install Flask httplib2 
+  sudo pip install oauth2client sqlalchemy sqlalchemy_utils
+  sudo pip install flask-login WTForms sudo pip install requests
+  sudo pip2 psycopg2  
+  ```
+ *  test if the installation is successful  ```python __init__.py```
+ * to deactivate the environment write ```deactivate```
+
 ### Create-Database
+* Login as postgres User:<br>
+```sudo su - postgres```
+* cd to app file<br>
+```cd /var/www/catalog/catalog```
+* get into PostgreSQL shell:<br>
+```psql```
+* Create a new User named *catalog*:<br>
+```# CREATE USER catalog WITH PASSWORD 'password';```
+* Create a new DB named *catalog*:<br>
+```# CREATE DATABASE catalog WITH OWNER catalog;```
+* Connect to the database *catalog* :<br>
+```# \c catalog```
+* Revoke all rights:<br>
+```# REVOKE ALL ON SCHEMA public FROM public;```
+* Lock down the permissions only to user *catalog*:<br>
+```# GRANT ALL ON SCHEMA public TO catalog;```
+* Log out from PostgreSQL:<br>
+```# \q```. Then return to the *grader* user: ``` exit```
+* Inside the Flask application, the database connection is now performed with:<br>
+  ```engine = create_engine('postgresql://catalog:password@localhost/catalog')```
 ### App-Config-File
 ### Apache2-Config-File
 ### Final-step
