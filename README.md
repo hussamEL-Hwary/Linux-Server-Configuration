@@ -20,7 +20,7 @@ Installing  a Linux server and prepare it to host
 [Items Catalog](https://github.com/hussamEL-Hwary/Flask-items-catalog) application, securing the server from a number of attack vectors, installing and configuring a database server, and deploy Items Catalog web applications onto it.
 ### Server-Info
 ###### Address: [http://35.177.244.230/](http://35.177.244.230/)
-###### SSH port: 50683
+###### SSH port: 2200
 ### AWS-instance
 * Create an Ubuntu instance on AWS [LightSail](https://lightsail.aws.amazon.com/)
 * login using instance setting page
@@ -48,10 +48,10 @@ and paste it in ```.ssh/authorized_keys``` file
 ##### Disable root user login
 * Change ```PermitRootLogin``` to ```no```. ```sudo nano /etc/ssh/sshd_config```
   and save the file
-##### Change default port to 50683
+##### Change default port to 2200
 * first go to  Amazon lightsail server Head to your
   instance - > Networking -> Firewall and allow 50683/tcp custom port.
-* Change ```Port``` to ```50683```. ```sudo nano /etc/ssh/sshd_config```
+* Change ```Port``` to ```2200```. ```sudo nano /etc/ssh/sshd_config```
   and save the file
 * Run  ```sudo service ssh restart``` to restart ssh service.
 ### Configure-Firewall
