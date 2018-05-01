@@ -56,6 +56,14 @@ and paste it in ```.ssh/authorized_keys``` file
   and save the file
 * Run  ```sudo service ssh restart``` to restart ssh service.
 ### Configure-Firewall
+``` 
+  sudo ufw default deny incoming
+  sudo ufw default allow outgoing
+  sudo ufw allow 50683/tcp
+  sudo ufw allow www
+  sudo ufw allow ntp
+  sudo ufw enable
+  ```
 ### Configure-timezone-to-UTC
 ### Install-apache2
 ### Install-PostgreSQL
