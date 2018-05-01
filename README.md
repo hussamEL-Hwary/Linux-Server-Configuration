@@ -28,6 +28,10 @@ Installing  a Linux server and prepare it to host
 * update ```sudo apt-get update```
 * upgrade ```sudo apt-get upgrade```
 ### Create-new-user
+* Add new user grader  ```sudo adduser grader```
+* Give sudo access to user grader ```sudo nano /etc/sudoers.d/grader```
+* Add following line to this file
+  ```grader ALL=(ALL:ALL) ALL```
 ### Create-SSH-Key
 ### Configure-Firewall
 ### Configure-timezone-to-UTC
