@@ -23,6 +23,10 @@ Installing  a Linux server and prepare it to host
 ###### Address: [http://35.177.244.230/](http://35.177.244.230/)
 ###### SSH port: 50683
 ### AWS-instance
+* Create an Ubuntu instance on AWS [LightSail](https://lightsail.aws.amazon.com/)
+* login using instance setting page
+* update ```sudo apt-get update```
+* upgrade ```sudo apt-get upgrade```
 ### Create-new-user
 ### Create-SSH-Key
 ### Configure-Firewall
