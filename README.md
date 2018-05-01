@@ -33,6 +33,28 @@ Installing  a Linux server and prepare it to host
 * Add following line to this file
   ```grader ALL=(ALL:ALL) ALL```
 ### Create-SSH-Key
+##### 1- On your local machine
+* generate SSH key pair with: ```ssh-keygen``` for example grader
+* save your keygen file in your ssh directory ```.ssh``` 
+##### 2- On your server
+* login to your server and create new dirctory .ssh ```mkdir .ssh```
+* Set permissions for .ssh: ```chmod 700 .ssh```
+* make file to store authorized keys inside ssh directory: ```touch .ssh/authorized_keys```
+* Set permissions: ```chmod 644 .ssh/authorized_keys```
+* from your local machine copy the content from previously created key ```grader.pub``` back to your server
+and paste it in ```.ssh/authorized_keys``` file
+##### Disable password login
+* Change ```PasswordAuthentication``` from ```yes```  to ```no```. ```sudo nano /etc/ssh/sshd_config```
+  and save the file
+##### Disable root user login
+* Change ```PermitRootLogin``` to ```no```. ```sudo nano /etc/ssh/sshd_config```
+  and save the file
+##### Change default port to 50683
+* first go to  Amazon lightsail server Head to your
+  instance - > Networking -> Firewall and allow 50683/tcp custom port.
+* Change ```Port``` to ```50683```. ```sudo nano /etc/ssh/sshd_config```
+  and save the file
+* Run  ```sudo service ssh restart``` to restart ssh service.
 ### Configure-Firewall
 ### Configure-timezone-to-UTC
 ### Install-apache2
